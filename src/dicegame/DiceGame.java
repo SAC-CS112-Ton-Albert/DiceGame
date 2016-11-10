@@ -20,46 +20,35 @@ public class DiceGame {
         Random rand = new Random();
         
   
-    int value = 0; //calculates the value on the dice
-    float win = 0; //calculates wins
-    float round = 0;
-    float loss = 0; 
-    String prediction;
-    int predictionNumber;
-    String replay;
-    int retry = 0;
-    String DiceNum;
-    int NumDice;
+   
+    int win = 0; //calculates wins, starts at zero
+    int round = 0; //number of rounds played, starts at zero
+    String prediction; //String for the JOptionPane
+    int predictionNumber; //accepts the number
+    String replay; //String for the JOptionPane to replay the game
+    int retry = 0; //Entered at the end of the game
+    String DiceNum;//Asks user for the number of dice
+    int value; //total number on the dice
+    int times;
                
     
 do {
     DiceNum = (JOptionPane.showInputDialog(null, " Choose how many dice you want to roll. 1, 2, or 3. "));
-    NumDice = Integer.parseInt(DiceNum);
-    prediction = (JOptionPane.showInputDialog("Enter 1 for a low number (2-6) or 2 for a high number (7-12)"));
-    predictionNumber  = Integer.parseInt(prediction); // scanner for the guess
-    if (predictionNumber != value)
-        JOptionPane.showMessageDialog(null, "You are incorrect!");
-    if (predictionNumber == value) 
-        JOptionPane.showMessageDialog(null, "You are correct!");
-    
-    if (predictionNumber != value)
-        loss++;
-    if (predictionNumber == value) 
-        win++;
+    times = Integer.parseInt(DiceNum);
 
-round++;
-   
+    Dice number = new Dice();
+    number.setRolls(times);
     
-    replay = (JOptionPane.showInputDialog("Enter 0 to play again. Enter any key to quit."));
-    retry  = Integer.parseInt(replay); 
+    
+    prediction = (JOptionPane.showInputDialog("Guess the total value on the dice.)"));
+    predictionNumber  = Integer.parseInt(prediction); // scanner for the guess
+    
+number.Correct(predictionNumber);
+number.Stats(predictionNumber);
+
 }
 while (retry == 0);
 
-JOptionPane.showMessageDialog(null, "Win percentage: " + (win/round)*100 +"%");
-    
-        
-}
-        
     }
     
-
+}

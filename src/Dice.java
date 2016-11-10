@@ -12,6 +12,7 @@ public class Dice {
     
 private int d;
 private int value;
+private int totalNum;
 
 
 	public Dice(int number_of_dice) {
